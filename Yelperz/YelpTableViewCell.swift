@@ -34,14 +34,14 @@ class YelpTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        name.preferredMaxLayoutWidth = name.frame.size.width
+//        name.preferredMaxLayoutWidth = name.frame.size.width
         
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        name.preferredMaxLayoutWidth = name.frame.size.width
+//        name.preferredMaxLayoutWidth = name.frame.size.width
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

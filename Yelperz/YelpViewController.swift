@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YelpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class YelpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, YelpFiltersViewControllerDelegate {
 
     var businesses: [Business]!
     
@@ -54,6 +54,22 @@ class YelpViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return businesses?.count ?? 0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        let filtersViewController = navigationController.topViewController as! YelpFiltersViewController
+        
+        filtersViewController.delegate = self
+    }
+    
+    private func yelpFiltersViewController(yelpFiltersViewController: YelpFiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
+        let categories = filters["categories"] as? [String]
+        
+        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: nil) { (businesses: [Business]?, error: Error?) -> Void in
+            self.businesses = businesses
+            self.tableView.reloadData()
+            }
     }
 
 

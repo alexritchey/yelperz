@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A68AC6F2570EF82BC063488D /* Pods_Yelperz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E85FC585328CE9E4AC6FEE30 /* Pods_Yelperz.framework */; };
+		C843A25D1F76E0E300DB7C5C /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C843A25C1F76E0E300DB7C5C /* FilterTableViewCell.swift */; };
 		C883F84D1F74480C005A80B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C883F84C1F74480C005A80B8 /* AppDelegate.swift */; };
 		C883F84F1F74480C005A80B8 /* YelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C883F84E1F74480C005A80B8 /* YelpViewController.swift */; };
 		C883F8521F74480C005A80B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C883F8501F74480C005A80B8 /* Main.storyboard */; };
@@ -16,12 +17,13 @@
 		C883F8611F7449C1005A80B8 /* YelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C883F8601F7449C1005A80B8 /* YelpTableViewCell.swift */; };
 		C8A2F4281F7458FF00BBF0E5 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A2F4271F7458FF00BBF0E5 /* Business.swift */; };
 		C8A2F42A1F74591400BBF0E5 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A2F4291F74591400BBF0E5 /* YelpClient.swift */; };
-		C8CAA16C1F75CFE600E5DE2A /* YelpSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CAA16B1F75CFE600E5DE2A /* YelpSettingsViewController.swift */; };
+		C8CAA16C1F75CFE600E5DE2A /* YelpFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CAA16B1F75CFE600E5DE2A /* YelpFiltersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		36F63E0BB96642C13D4826A4 /* Pods-Yelperz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelperz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yelperz/Pods-Yelperz.debug.xcconfig"; sourceTree = "<group>"; };
 		B6A5F80093BB67C46E2C0EBF /* Pods-Yelperz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelperz.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yelperz/Pods-Yelperz.release.xcconfig"; sourceTree = "<group>"; };
+		C843A25C1F76E0E300DB7C5C /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		C883F8491F74480C005A80B8 /* Yelperz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelperz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C883F84C1F74480C005A80B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C883F84E1F74480C005A80B8 /* YelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpViewController.swift; sourceTree = "<group>"; };
@@ -32,7 +34,7 @@
 		C883F8601F7449C1005A80B8 /* YelpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpTableViewCell.swift; sourceTree = "<group>"; };
 		C8A2F4271F7458FF00BBF0E5 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		C8A2F4291F74591400BBF0E5 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
-		C8CAA16B1F75CFE600E5DE2A /* YelpSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpSettingsViewController.swift; sourceTree = "<group>"; };
+		C8CAA16B1F75CFE600E5DE2A /* YelpFiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpFiltersViewController.swift; sourceTree = "<group>"; };
 		E85FC585328CE9E4AC6FEE30 /* Pods_Yelperz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelperz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -95,7 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				C883F84E1F74480C005A80B8 /* YelpViewController.swift */,
-				C8CAA16B1F75CFE600E5DE2A /* YelpSettingsViewController.swift */,
+				C8CAA16B1F75CFE600E5DE2A /* YelpFiltersViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				C883F8601F7449C1005A80B8 /* YelpTableViewCell.swift */,
+				C843A25C1F76E0E300DB7C5C /* FilterTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -146,7 +149,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Alex Ritchey";
 				TargetAttributes = {
 					C883F8481F74480C005A80B8 = {
@@ -252,7 +255,8 @@
 				C883F8611F7449C1005A80B8 /* YelpTableViewCell.swift in Sources */,
 				C8A2F4281F7458FF00BBF0E5 /* Business.swift in Sources */,
 				C883F84F1F74480C005A80B8 /* YelpViewController.swift in Sources */,
-				C8CAA16C1F75CFE600E5DE2A /* YelpSettingsViewController.swift in Sources */,
+				C8CAA16C1F75CFE600E5DE2A /* YelpFiltersViewController.swift in Sources */,
+				C843A25D1F76E0E300DB7C5C /* FilterTableViewCell.swift in Sources */,
 				C883F84D1F74480C005A80B8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,7 +293,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -297,7 +303,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -340,7 +350,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -348,7 +360,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

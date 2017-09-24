@@ -20,8 +20,11 @@ class YelpTableViewCell: UITableViewCell {
 
     var business: Business! {
         didSet {
+            if let thumbnailURL = business.imageURL {
+                thumbnail.setImageWith(thumbnailURL)
+            }
+            
             name.text = business.name
-            thumbnail.setImageWith(business.imageURL!)
             categories.text = business.categories
             address.text = business.address
             reviews.text = "\(business.reviewCount?.description ?? "0") Reviews"

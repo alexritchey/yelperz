@@ -8,11 +8,12 @@
 
 import UIKit
 
-class YelpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, YelpFiltersViewControllerDelegate {
+class YelpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, YelpFiltersViewControllerDelegate {
 
     var businesses: [Business]!
     
     @IBOutlet weak var tableView: UITableView!
+    let searchBar = UISearchBar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,10 @@ class YelpViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
+        
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
             self.tableView.reloadData()
@@ -32,13 +37,22 @@ class YelpViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print(business.address!)
                 }
             }
-            
         })
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Search Bar Configuration
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        Business.searchWithTerm(term: searchText, completion: { (businesses: [Business]?, error: Error?) -> Void in
+            if (searchText.count > 3) {
+                self.businesses = businesses
+                self.tableView.reloadData()
+            }
+        })
     }
     
     // Table View Configuration

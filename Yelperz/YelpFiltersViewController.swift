@@ -15,10 +15,11 @@ import UIKit
 class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FilterCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var pickerView: UIPickerView!
+    
     weak var delegate: YelpFiltersViewControllerDelegate?
     
-    var sections: [[String:String]] = [
+    let sections: [[String:String]] = [
         [
             "label": "Distance",
             "id": "DistanceCell"
@@ -33,12 +34,13 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         ]
     ]
     
+    let sortList = ["Best Match", "Distance", "Highest Rated"]
+    var selectedSort: Int = 0
+    
     var categories: [[String:String]]!
     var switchStates = [Int:Bool]()
     
-    let CategoriesIdentifier = "FilterCell",
-        HeaderViewIdentifier = "TableViewHeaderView"
-    
+    // Init
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,6 +51,7 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         
         tableView.sectionHeaderHeight = 60;
         
+        pickerView.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -105,6 +108,7 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         let newCell = cell as! SortTableViewCell
         
         newCell.sortLabel.text = "Sort By"
+        newCell.selectedLabel.text = "Best Match"
         
         return newCell
     }
@@ -117,6 +121,8 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         return newCell
     }
     
+    
+    // Delegate from the Filter Cell
     func filterCell(filterCell: FilterTableViewCell, didChangeValue value: Bool) {
         let indexPath = tableView.indexPath(for: filterCell)!
         switchStates[indexPath.row] = value
@@ -141,6 +147,19 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         if selectedCategories.count > 0 {
             filters["categories"] = selectedCategories
         }
+        
+        switch selectedSort {
+            case 0:
+                filters["sort"] = YelpSortMode.bestMatched
+            case 1:
+                filters["sort"] = YelpSortMode.distance
+            case 2:
+                filters["sort"] = YelpSortMode.highestRated
+            default:
+                break
+        }
+        
+        print("About to call delegate")
         
         delegate?.yelpFiltersViewController?(yelpFiltersViewController: self, didUpdateFilters: filters)
     }
@@ -320,3 +339,29 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         ]
     }
 }
+
+extension YelpFiltersViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return sortList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // Should update Sort Cell selectedLabel
+        print(row)
+        selectedSort = row
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return sortList[row]
+    }
+}
+
+
+
+
+

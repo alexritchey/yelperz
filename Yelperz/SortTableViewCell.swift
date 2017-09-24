@@ -11,7 +11,8 @@ import UIKit
 class SortTableViewCell: UITableViewCell {
 
     @IBOutlet weak var sortLabel: UILabel!
-
+    @IBOutlet weak var selectedLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +23,4 @@ class SortTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

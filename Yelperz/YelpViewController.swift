@@ -62,10 +62,11 @@ class YelpViewController: UIViewController, UITableViewDelegate, UITableViewData
         filtersViewController.delegate = self
     }
     
-    private func yelpFiltersViewController(yelpFiltersViewController: YelpFiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
+    func yelpFiltersViewController(yelpFiltersViewController: YelpFiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
         let categories = filters["categories"] as? [String]
+        let sortBy = filters["sort"] as! YelpSortMode
         
-        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: nil) { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: "Restaurants", sort: sortBy, categories: categories, deals: nil) { (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
             self.tableView.reloadData()
             }

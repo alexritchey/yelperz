@@ -24,7 +24,6 @@ class YelpViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.rowHeight = UITableViewAutomaticDimension
         
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
-            
             self.businesses = businesses
             self.tableView.reloadData()
             if let businesses = businesses {

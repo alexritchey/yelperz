@@ -18,8 +18,26 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
 
     weak var delegate: YelpFiltersViewControllerDelegate?
     
+    var sections: [[String:String]] = [
+        [
+            "label": "Distance",
+            "id": "DistanceCell"
+        ],
+        [
+            "label": "Sort By",
+            "id": "SortCell"
+        ],
+        [
+            "label": "Categories",
+            "id": "FilterCell"
+        ]
+    ]
+    
     var categories: [[String:String]]!
     var switchStates = [Int:Bool]()
+    
+    let CategoriesIdentifier = "FilterCell",
+        HeaderViewIdentifier = "TableViewHeaderView"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +47,8 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.sectionHeaderHeight = 60;
+        
         // Do any additional setup after loading the view.
     }
 
@@ -37,27 +57,69 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         // Dispose of any resources that can be recreated.
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]["label"]
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        if section == 2 {
+            return categories.count
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell", for: indexPath) as! FilterTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: sections[indexPath.section]["id"]!, for: indexPath)
+        
+        switch indexPath.section {
+            case 0:
+                return configureDistanceCell(cell: cell, indexPath: indexPath)
+            case 1:
+                return configureSortCell(cell: cell, indexPath: indexPath)
+            case 2:
+                return configureCategoryCell(cell: cell, indexPath: indexPath)
+            default:
+                return cell
+        }
+    }
+    
+    // Cell Configurations
+    func configureCategoryCell(cell: UITableViewCell, indexPath: IndexPath) -> FilterTableViewCell {
+        let newCell = cell as! FilterTableViewCell
+        newCell.delegate = self
+        
         let category = categories[indexPath.row]
         
-        cell.categoryLabel.text = category["name"]
-        cell.delegate = self
-
-        cell.categorySwitch.isOn = switchStates[indexPath.row] ?? false
-
-        return cell
+        newCell.categoryLabel.text = category["name"]
+        newCell.categorySwitch.isOn = switchStates[indexPath.row] ?? false
+        
+        return newCell
+    }
+    
+    func configureSortCell(cell: UITableViewCell, indexPath: IndexPath) -> SortTableViewCell {
+        let newCell = cell as! SortTableViewCell
+        
+        newCell.sortLabel.text = "Sort By"
+        
+        return newCell
+    }
+    
+    func configureDistanceCell(cell: UITableViewCell, indexPath: IndexPath) -> DistanceTableViewCell {
+        let newCell = cell as! DistanceTableViewCell
+        
+        newCell.distanceLabel.text = "Distance"
+        
+        return newCell
     }
     
     func filterCell(filterCell: FilterTableViewCell, didChangeValue value: Bool) {
         let indexPath = tableView.indexPath(for: filterCell)!
         switchStates[indexPath.row] = value
-        print("got switch event")
     }
     
     @IBAction func onCancel(_ sender: Any) {

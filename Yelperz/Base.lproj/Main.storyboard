@@ -174,14 +174,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nxq-oF-j0j">
-                                                    <rect key="frame" x="302" y="8" width="51" height="31"/>
+                                                    <rect key="frame" x="318" y="8" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Nxq-oF-j0j" firstAttribute="centerY" secondItem="TOZ-av-Ogc" secondAttribute="centerY" constant="1.75" id="66A-SK-QC9"/>
                                                 <constraint firstItem="sfc-Wy-fcu" firstAttribute="leading" secondItem="TOZ-av-Ogc" secondAttribute="leading" constant="16" id="80T-r8-aOO"/>
                                                 <constraint firstItem="sfc-Wy-fcu" firstAttribute="centerY" secondItem="TOZ-av-Ogc" secondAttribute="centerY" id="B4a-zQ-yiO"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Nxq-oF-j0j" secondAttribute="trailing" constant="16" id="BtT-CN-1qY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Nxq-oF-j0j" secondAttribute="trailing" id="BtT-CN-1qY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -267,6 +267,35 @@
                                             <outlet property="pickerView" destination="4qq-V7-aiL" id="m13-vR-7a2"/>
                                             <outlet property="selectedLabel" destination="4i1-CP-MU9" id="Dsk-X1-bJm"/>
                                             <outlet property="sortLabel" destination="VkP-yR-XUK" id="tKb-qO-aZz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DealsCell" id="VEF-dp-Flt" userLabel="DealsCell" customClass="DealsTableViewCell" customModule="Yelperz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="360" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VEF-dp-Flt" id="f2b-Te-VFQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdn-jg-67h">
+                                                    <rect key="frame" x="16" y="11" width="43" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tN4-qq-1AW">
+                                                    <rect key="frame" x="318" y="8" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Sdn-jg-67h" firstAttribute="leading" secondItem="f2b-Te-VFQ" secondAttribute="leading" constant="16" id="3TA-tW-7dz"/>
+                                                <constraint firstItem="Sdn-jg-67h" firstAttribute="centerY" secondItem="f2b-Te-VFQ" secondAttribute="centerY" id="FNG-T6-7zK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="tN4-qq-1AW" secondAttribute="trailing" id="Jz1-0q-N5W"/>
+                                                <constraint firstItem="tN4-qq-1AW" firstAttribute="centerY" secondItem="f2b-Te-VFQ" secondAttribute="centerY" constant="1.75" id="bNU-YJ-lYq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dealsLabel" destination="Sdn-jg-67h" id="c8Q-gW-mfY"/>
+                                            <outlet property="dealsSwitch" destination="tN4-qq-1AW" id="UkP-SE-ybe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -78,10 +78,11 @@ class YelpViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func yelpFiltersViewController(yelpFiltersViewController: YelpFiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
         let categories = filters["categories"] as? [String]
-        let sortBy = filters["sort"] as! YelpSortMode
+        let sortBy = filters["sort"] as? YelpSortMode
         let distance = filters["distance"] as? Int
+        let deals = filters["deals"] as? Bool
         
-        Business.searchWithTerm(term: "Restaurants", sort: sortBy, categories: categories, deals: nil, distance: distance) { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: "Restaurants", sort: sortBy, categories: categories, deals: deals, distance: distance) { (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
             self.tableView.reloadData()
             }

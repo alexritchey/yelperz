@@ -12,7 +12,7 @@ import UIKit
     @objc optional func yelpFiltersViewController(yelpFiltersViewController: YelpFiltersViewController, didUpdateFilters filters: [String:Any])
 }
 
-class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FilterCellDelegate, SortCellDelegate, DistanceCellDelegate {
+class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FilterCellDelegate, SortCellDelegate, DistanceCellDelegate, DealsCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerView: UIPickerView!
@@ -22,6 +22,10 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
     var selectedIndexPath: IndexPath?
     
     let sections: [[String:String]] = [
+        [
+            "label": "Deals",
+            "id": "DealsCell"
+        ],
         [
             "label": "Distance",
             "id": "DistanceCell"
@@ -38,6 +42,7 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
     
     var selectedSort: Int = 0
     var selectedRadius: Int = 17000
+    var includeDeals: Bool = false
     
     var categories: [[String:String]]!
     var switchStates = [Int:Bool]()
@@ -72,7 +77,7 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 2 {
+        if section == 3 {
             return categories.count
         } else {
             return 1
@@ -81,7 +86,7 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-            case 0, 1:
+            case 1, 2:
                 let previousIndexPath = selectedIndexPath
                 if indexPath == selectedIndexPath {
                     selectedIndexPath = nil
@@ -110,9 +115,9 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         switch indexPath.section {
-            case 0:
-                (cell as! DistanceTableViewCell).watchFrameChanges()
             case 1:
+                (cell as! DistanceTableViewCell).watchFrameChanges()
+            case 2:
                 (cell as! SortTableViewCell).watchFrameChanges()
             default:
                 break
@@ -120,13 +125,13 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
             if indexPath == selectedIndexPath {
                 return DistanceTableViewCell.expandedHeight
             } else {
                 return DistanceTableViewCell.defaultHeight
             }
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 2 {
             if indexPath == selectedIndexPath {
                 return SortTableViewCell.expandedHeight
             } else {
@@ -142,10 +147,12 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         
         switch indexPath.section {
             case 0:
-                return configureDistanceCell(cell: cell, indexPath: indexPath)
+                return configureDealsCell(cell: cell, indexPath: indexPath)
             case 1:
-                return configureSortCell(cell: cell, indexPath: indexPath)
+                return configureDistanceCell(cell: cell, indexPath: indexPath)
             case 2:
+                return configureSortCell(cell: cell, indexPath: indexPath)
+            case 3:
                 return configureCategoryCell(cell: cell, indexPath: indexPath)
             default:
                 return cell
@@ -175,6 +182,16 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         return newCell
     }
     
+    func configureDealsCell(cell: UITableViewCell, indexPath: IndexPath) -> DealsTableViewCell {
+        let newCell = cell as! DealsTableViewCell
+        newCell.delegate = self
+        
+        newCell.dealsLabel.text = "Deals"
+        newCell.dealsSwitch.isOn = false
+        
+        return newCell
+    }
+    
     func configureDistanceCell(cell: UITableViewCell, indexPath: IndexPath) -> DistanceTableViewCell {
         let newCell = cell as! DistanceTableViewCell
         newCell.delegate = self
@@ -183,7 +200,6 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         
         return newCell
     }
-    
     
     // Delegate from the Filter Cell
     func filterCell(filterCell: FilterTableViewCell, didChangeValue value: Bool) {
@@ -197,6 +213,10 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
     
     func distanceCell(distanceCell: DistanceTableViewCell, updateSelectedDistance value: Int) {
         selectedRadius = value
+    }
+    
+    func dealsCell(dealsCell: DealsTableViewCell, didChangeValue value: Bool) {
+        includeDeals = value
     }
     
     @IBAction func onCancel(_ sender: Any) {
@@ -220,17 +240,18 @@ class YelpFiltersViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         switch selectedSort {
-            case 0:
-                filters["sort"] = YelpSortMode.bestMatched
             case 1:
-                filters["sort"] = YelpSortMode.distance
+                filters["sort"] = YelpSortMode.bestMatched
             case 2:
+                filters["sort"] = YelpSortMode.distance
+            case 3:
                 filters["sort"] = YelpSortMode.highestRated
             default:
                 break
         }
         
         filters["distance"] = selectedRadius
+        filters["deals"] = includeDeals as! Bool
         
         delegate?.yelpFiltersViewController?(yelpFiltersViewController: self, didUpdateFilters: filters)
     }

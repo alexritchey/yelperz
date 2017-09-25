@@ -189,76 +189,95 @@
                                             <outlet property="categorySwitch" destination="Nxq-oF-j0j" id="rut-si-cCp"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortCell" id="4RK-qS-HFE" customClass="SortTableViewCell" customModule="Yelperz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceCell" rowHeight="144" id="2b3-w5-j5m" userLabel="DistanceCell" customClass="DistanceTableViewCell" customModule="Yelperz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="144"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2b3-w5-j5m" id="thb-JG-mb6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="143.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FO1-Nu-aGv">
+                                                    <rect key="frame" x="16" y="16" width="67" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNa-KN-6mG" userLabel="Distance Selection">
+                                                    <rect key="frame" x="323" y="16" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="gUG-pV-wXc">
+                                                    <rect key="frame" x="0.0" y="37" width="375" height="107"/>
+                                                </pickerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="vNa-KN-6mG" secondAttribute="trailing" constant="16" id="4hq-B0-viO"/>
+                                                <constraint firstItem="FO1-Nu-aGv" firstAttribute="top" secondItem="thb-JG-mb6" secondAttribute="topMargin" constant="8" id="79f-am-UXH"/>
+                                                <constraint firstItem="FO1-Nu-aGv" firstAttribute="leading" secondItem="thb-JG-mb6" secondAttribute="leading" constant="16" id="AFb-zm-uJ0"/>
+                                                <constraint firstItem="gUG-pV-wXc" firstAttribute="top" secondItem="FO1-Nu-aGv" secondAttribute="bottom" id="CCB-sj-DzO"/>
+                                                <constraint firstItem="vNa-KN-6mG" firstAttribute="top" secondItem="thb-JG-mb6" secondAttribute="topMargin" constant="8" id="UnG-YA-p0C"/>
+                                                <constraint firstItem="gUG-pV-wXc" firstAttribute="leading" secondItem="thb-JG-mb6" secondAttribute="leading" id="fyw-SO-YGF"/>
+                                                <constraint firstAttribute="trailing" secondItem="gUG-pV-wXc" secondAttribute="trailing" id="tE9-Tn-aHm"/>
+                                                <constraint firstAttribute="bottom" secondItem="gUG-pV-wXc" secondAttribute="bottom" id="tq7-DA-rXp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="distanceLabel" destination="FO1-Nu-aGv" id="dIK-hk-Yy1"/>
+                                            <outlet property="pickerView" destination="gUG-pV-wXc" id="aN1-y7-uT2"/>
+                                            <outlet property="selectedLabel" destination="vNa-KN-6mG" id="8ra-PI-9Sl"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortCell" rowHeight="144" id="4RK-qS-HFE" customClass="SortTableViewCell" customModule="Yelperz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="216" width="375" height="144"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4RK-qS-HFE" id="0tZ-VV-7a3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="143.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkP-yR-XUK">
-                                                    <rect key="frame" x="16" y="11.5" width="57" height="21"/>
+                                                    <rect key="frame" x="16" y="16" width="57" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Matched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i1-CP-MU9" userLabel="Sort Selection">
-                                                    <rect key="frame" x="252" y="11" width="107" height="21"/>
+                                                    <rect key="frame" x="252" y="16" width="107" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="4qq-V7-aiL">
+                                                    <rect key="frame" x="0.0" y="37" width="375" height="107"/>
+                                                </pickerView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="4i1-CP-MU9" firstAttribute="top" secondItem="0tZ-VV-7a3" secondAttribute="topMargin" constant="8" id="518-0U-K0S"/>
                                                 <constraint firstItem="VkP-yR-XUK" firstAttribute="leading" secondItem="0tZ-VV-7a3" secondAttribute="leading" constant="16" id="7no-Lc-qIX"/>
-                                                <constraint firstItem="VkP-yR-XUK" firstAttribute="centerY" secondItem="0tZ-VV-7a3" secondAttribute="centerY" id="Vbi-Th-ekx"/>
+                                                <constraint firstAttribute="bottom" secondItem="4qq-V7-aiL" secondAttribute="bottom" id="F9j-ws-ovI"/>
+                                                <constraint firstAttribute="trailing" secondItem="4qq-V7-aiL" secondAttribute="trailing" id="PJg-tw-ask"/>
+                                                <constraint firstItem="VkP-yR-XUK" firstAttribute="top" secondItem="0tZ-VV-7a3" secondAttribute="topMargin" constant="8" id="SQJ-qc-uh7"/>
+                                                <constraint firstItem="4qq-V7-aiL" firstAttribute="leading" secondItem="0tZ-VV-7a3" secondAttribute="leading" id="npF-3d-6uA"/>
+                                                <constraint firstItem="4qq-V7-aiL" firstAttribute="top" secondItem="VkP-yR-XUK" secondAttribute="bottom" id="rjy-dG-lRd"/>
                                                 <constraint firstAttribute="trailing" secondItem="4i1-CP-MU9" secondAttribute="trailing" constant="16" id="tZG-bF-bWR"/>
-                                                <constraint firstItem="4i1-CP-MU9" firstAttribute="centerY" secondItem="0tZ-VV-7a3" secondAttribute="centerY" id="zdS-KX-6O8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="pickerView" destination="4qq-V7-aiL" id="m13-vR-7a2"/>
                                             <outlet property="selectedLabel" destination="4i1-CP-MU9" id="Dsk-X1-bJm"/>
                                             <outlet property="sortLabel" destination="VkP-yR-XUK" id="tKb-qO-aZz"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceCell" id="IeR-dM-gnC" userLabel="DistanceCell" customClass="DistanceTableViewCell" customModule="Yelperz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IeR-dM-gnC" id="h8n-IN-EyD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rh-Hr-DfQ" userLabel="Distance Label">
-                                                    <rect key="frame" x="16" y="11.5" width="67" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="0rh-Hr-DfQ" firstAttribute="leading" secondItem="h8n-IN-EyD" secondAttribute="leading" constant="16" id="XiM-vb-1Pk"/>
-                                                <constraint firstItem="0rh-Hr-DfQ" firstAttribute="centerY" secondItem="h8n-IN-EyD" secondAttribute="centerY" id="gxX-aW-1si"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="distanceLabel" destination="0rh-Hr-DfQ" id="Lto-jm-LDN"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qq-V7-aiL">
-                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eCo-qr-qkk" secondAttribute="trailing" id="1fc-kf-vLS"/>
-                            <constraint firstAttribute="trailing" secondItem="4qq-V7-aiL" secondAttribute="trailing" id="3Gv-QW-oOd"/>
                             <constraint firstItem="eCo-qr-qkk" firstAttribute="leading" secondItem="OaH-Q2-f6k" secondAttribute="leading" id="455-bZ-apB"/>
-                            <constraint firstItem="c8V-4N-ToK" firstAttribute="top" secondItem="4qq-V7-aiL" secondAttribute="bottom" id="5dt-ul-G0a"/>
                             <constraint firstItem="c8V-4N-ToK" firstAttribute="top" secondItem="eCo-qr-qkk" secondAttribute="bottom" id="O5U-5G-x2C"/>
                             <constraint firstItem="eCo-qr-qkk" firstAttribute="top" secondItem="s6c-hk-j8l" secondAttribute="bottom" id="T1p-hx-PYk"/>
-                            <constraint firstItem="4qq-V7-aiL" firstAttribute="leading" secondItem="OaH-Q2-f6k" secondAttribute="leading" id="Vo3-MR-is3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="7xP-LP-jsg">
@@ -274,7 +293,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="pickerView" destination="4qq-V7-aiL" id="pUV-gn-hf0"/>
                         <outlet property="tableView" destination="eCo-qr-qkk" id="NcZ-vK-Vij"/>
                     </connections>
                 </viewController>
